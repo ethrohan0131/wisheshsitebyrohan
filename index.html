@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>তামান্নার জন্মদিন 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: #ff4757;
+            font-size: 20px;
+            animation: float 10s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Step 1: Initial Screen */
+        .step-1 {
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        /* Step 2: Welcome Screen */
+        .step-2 {
+            display: none;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        /* Step 3: Birthday Message */
+        .step-3 {
+            display: none;
+            text-align: center;
+            max-width: 800px;
+            animation: slideIn 1s ease-out;
+            padding-bottom: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Step 1 Styles */
+        .initial-text {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #ffe66d;
+            font-weight: 600;
+        }
+
+        .knock-door {
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            border-radius: 10px;
+            margin: 40px auto;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .knock-door:hover {
+            transform: scale(1.05);
+        }
+
+        .door-handle {
+            width: 20px;
+            height: 20px;
+            background: #ffd700;
+            border-radius: 50%;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .knock-door::before {
+            content: '🚪';
+            font-size: 8rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+
+        .knock-text {
+            font-size: 1.2rem;
+            color: #4ecdc4;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Step 2 Styles */
+        .welcome-text {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffe66d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .name-input {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: 2px solid #ff6b6b;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Hind Siliguri', sans-serif;
+            backdrop-filter: blur(10px);
+        }
+
+        .name-input::placeholder {
+            color: #ffa5a5;
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #4ecdc4;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+        }
+
+        .next-btn {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #ff4757, #ff6348);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
+            font-family: 'Hind Siliguri', sans-serif;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .next-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .next-btn.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 71, 87, 0.6);
+        }
+
+        .error-text {
+            color: #ff6b6b;
+            font-size: 1rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Step 3 Styles */
+        .birthday-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .special-text {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            font-weight: 600;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Interactive Elements */
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            margin: 40px auto;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff4757, #ff6348);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .box::before {
+            content: '🎁';
+            font-size: 4rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .gift-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Cake Section */
+        .cake-container {
+            margin: 40px 0;
+            cursor: pointer;
+        }
+
+        .cake {
+            font-size: 8rem;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .candle-instruction {
+            font-size: 1rem;
+            color: #ffe66d;
+            margin-top: 10px;
+        }
+
+        /* Photo Frame */
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            margin: 30px auto;
+            border: 10px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-text {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffe66d;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffe66d;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            to {
+                transform: scale(30);
+                opacity: 0;
+            }
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Door opening animation */
+        @keyframes doorOpen {
+            0% { transform: perspective(1000px) rotateY(0); }
+            100% { transform: perspective(1000px) rotateY(-90deg); }
+        }
+
+        .door-opening {
+            animation: doorOpen 1s ease-out forwards;
+            transform-origin: left center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .initial-text {
+                font-size: 1.5rem;
+            }
+            .welcome-text {
+                font-size: 2rem;
+            }
+            .birthday-title {
+                font-size: 2rem;
+            }
+            .message-text {
+                font-size: 1rem;
+            }
+            .cake {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Floating Hearts -->
+    <div id="hearts"></div>
+
+    <div class="container">
+        <!-- Step 1: Initial Door -->
+        <div class="step-1" id="step1">
+            <h1 class="initial-text">কেউ একজন তোমার জন্য অপেক্ষা করছে...</h1>
+            <div class="knock-door" id="door" onclick="knockDoor()">
+                <div class="door-handle"></div>
+            </div>
+            <p class="knock-text">🎵 দরজায় নক করো 🎵</p>
+        </div>
+
+        <!-- Step 2: Name Verification -->
+        <div class="step-2" id="step2">
+            <h1 class="welcome-text">তুমি কি সত্যিই সেই বিশেষ মানুষ?</h1>
+            <input type="text" class="name-input" id="nameInput" placeholder="তোমার নাম লিখো..." oninput="checkName()">
+            <p class="error-text" id="errorText">এই সারপ্রাইজ শুধুমাত্র তামান্নার জন্য! 💕</p>
+            <button class="next-btn" id="nextBtn" onclick="goToStep3()">🎉 সারপ্রাইজ দেখো 🎉</button>
+        </div>
+
+        <!-- Step 3: Birthday Message -->
+        <div class="step-3" id="step3">
+            <h1 class="birthday-title">🎂 শুভ জন্মদিন তামান্না! 🎂</h1>
+            
+            <div class="message-box">
+                <p class="message-text">
+                    আজ একটি বিশেষ দিন, কারণ আজ তোমার জন্মদিন! 🌟<br><br>
+                    তোমার জীবনের প্রতিটি মুহূর্ত হোক আনন্দে ভরা,<br>
+                    প্রতিটি স্বপ্ন হোক পূর্ণ, প্রতিটি দিন হোক উজ্জ্বল।<br><br>
+                    তুমি যে আলো ছড়াও চারপাশে, তা যেন কখনো ম্লান না হয়।<br>
+                    তোমার হাসি যেন সবসময় থাকে, তোমার খুশি যেন কখনো ফুরায় না।
+                </p>
+                
+                <p class="special-text">💖 তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার 💖</p>
+                
+                <p class="message-text">
+                    প্রতিটি জন্মদিনে তোমাকে আরও বেশি ভালোবাসি,<br>
+                    প্রতিটি মুহূর্তে তোমার সাথে থাকতে চাই।<br><br>
+                    এই বিশেষ দিনে শুধু এটুকুই বলতে চাই -<br>
+                    <strong>তোমাকে পেয়ে আমি পৃথিবীর সবচেয়ে সৌভাগ্যবান!</strong>
+                </p>
+            </div>
+
+            <!-- Gift Box -->
+            <div class="gift-box" onclick="openGift()">
+                <div class="box"></div>
+            </div>
+            <div class="gift-message" id="giftMessage">
+                🎁 তোমার জন্য অসংখ্য ভালোবাসা, অগণিত শুভেচ্ছা এবং অনন্ত খুশির উপহার! 🎁
+            </div>
+
+            <!-- Cake -->
+            <div class="cake-container" onclick="blowCandles()">
+                <div class="cake" id="cake">🎂</div>
+                <p class="candle-instruction">কেকের উপর ক্লিক করে মোমবাতি নিভাও!</p>
+            </div>
+
+            <!-- Photo Frame -->
+            <div class="photo-frame">
+                <div class="photo-text">
+                    তামান্না<br>
+                    💕<br>
+                    আমার সবকিছু
+                </div>
+            </div>
+
+            <div class="message-box">
+                <p class="special-text">🌹 আরও অনেক অনেক জন্মদিন পালন করব একসাথে 🌹</p>
+                <p class="message-text">
+                    জন্মদিনের অনেক অনেক শুভেচ্ছা ও ভালোবাসা রইল।<br>
+                    তোমার সব স্বপ্ন পূরণ হোক, সব ইচ্ছা সফল হোক।<br><br>
+                    <strong>ভালোবাসি তোমায় ❤️</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Control -->
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 10000);
+            }, 300);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff6348', '#5f27cd'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+
+        // Create fireworks
+        function createFirework(x, y) {
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff6348'];
+            
+            for (let i = 0; i < 20; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(firework);
+                
+                setTimeout(() => firework.remove(), 1000);
+            }
+        }
+
+        // Step 1: Knock door
+        let knockCount = 0;
+        function knockDoor() {
+            knockCount++;
+            const door = document.getElementById('door');
+            
+            // Door shake animation
+            door.style.animation = 'none';
+            setTimeout(() => {
+                door.style.animation = 'bounce 0.5s ease';
+            }, 10);
+            
+            // Play knock sound effect (visual)
+            createFirework(
+                door.offsetLeft + door.offsetWidth / 2,
+                door.offsetTop + door.offsetHeight / 2
+            );
+            
+            if (knockCount >= 3) {
+                // Open door after 3 knocks
+                door.classList.add('door-opening');
+                setTimeout(() => {
+                    document.getElementById('step1').style.display = 'none';
+                    document.getElementById('step2').style.display = 'block';
+                }, 1000);
+            }
+        }
+
+        // Step 2: Check name
+        function checkName() {
+            const input = document.getElementById('nameInput').value.toLowerCase().trim();
+            const nextBtn = document.getElementById('nextBtn');
+            const errorText = document.getElementById('errorText');
+            
+            if (input === 'tamanna' || input === 'তামান্না') {
+                nextBtn.classList.add('active');
+                errorText.style.display = 'none';
+            } else if (input.length > 0) {
+                nextBtn.classList.remove('active');
+                errorText.style.display = 'block';
+            } else {
+                nextBtn.classList.remove('active');
+                errorText.style.display = 'none';
+            }
+        }
+
+        // Go to Step 3
+        function goToStep3() {
+            const input = document.getElementById('nameInput').value.toLowerCase().trim();
+            
+            if (input === 'tamanna' || input === 'তামান্না') {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                createConfetti();
+                
+                // Start random fireworks
+                setInterval(() => {
+                    createFirework(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight / 2
+                    );
+                }, 1000);
+            }
+        }
+
+        // Open gift
+        function openGift() {
+            const giftMessage = document.getElementById('giftMessage');
+            giftMessage.style.display = 'block';
+            createConfetti();
+        }
+
+        // Blow candles
+        function blowCandles() {
+            const cake = document.getElementById('cake');
+            cake.textContent = '🍰';
+            createConfetti();
+            
+            // Create celebration effect
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+                        window.innerHeight / 2
+                    );
+                }, i * 200);
+            }
+        }
+
+        // Toggle music (placeholder)
+        let musicPlaying = false;
+        function toggleMusic() {
+            musicPlaying = !musicPlaying;
+            const musicControl = document.querySelector('.music-control');
+            musicControl.textContent = musicPlaying ? '🔇' : '🎵';
+        }
+
+        // Initialize
+        createStars();
+        createHearts();
+
+        // Add click effect
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('container')) return;
+            
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d'];
+            const burst = document.createElement('div');
+            burst.style.position = 'absolute';
+            burst.style.left = e.clientX + 'px';
+            burst.style.top = e.clientY + 'px';
+            burst.style.width = '10px';
+            burst.style.height = '10px';
+            burst.style.borderRadius = '50%';
+            burst.style.background = colors[Math.floor(Math.random() * colors.length)];
+            burst.style.pointerEvents = 'none';
+            burst.style.animation = 'explode 0.5s ease-out forwards';
+            document.body.appendChild(burst);
+            
+            setTimeout(() => burst.remove(), 500);
+        });
+
+        // Add enter key support for name input
+        document.getElementById('nameInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const nextBtn = document.getElementById('nextBtn');
+                if (nextBtn.classList.contains('active')) {
+                    goToStep3();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
